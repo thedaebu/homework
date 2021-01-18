@@ -91,8 +91,20 @@ class Map
         @map.reject {|subarr| subarr.include?(key)}
     end
 
-    # def show
-        
-    # end
+    def show
+       @map.deep_dup 
+    end
+
+    def deep_dup
+        new_arr = []
+        return new_arr << self if !self.is_a?(Array)
+        self.each_with_index do |ele,i|
+            if ele.is_a?(Array)
+                self[i].deep_dup
+            else
+                new_arr << self[i]
+            end
+        new_arr
+    end
     
 end
