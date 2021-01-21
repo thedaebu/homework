@@ -45,13 +45,20 @@ describe Dessert do
   end
 
   describe "#eat" do
-    it "subtracts an amount from the quantity"
+    it "subtracts an amount from the quantity" do
+      cake.eat(5)
+      expect(cake.quantity).to eq(5)
+    end
 
-    it "raises an error if the amount is greater than the quantity"
+    it "raises an error if the amount is greater than the quantity" do
+      expect{cake.eat(15)}.to raise_error("not enough left!")
+    end
   end
 
   describe "#serve" do
-    it "contains the titleized version of the chef's name"
+    it "contains the titleized version of the chef's name" do
+      expect(cake.serve).to eq("Chef has made 10 cakes!")
+    end
   end
 
   describe "#make_more" do
