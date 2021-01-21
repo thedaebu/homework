@@ -29,6 +29,7 @@ describe Dessert do
 
   describe "#add_ingredient" do
     it "adds an ingredient to the ingredients array" do
+      expect(cake.ingredients).to be_empty
       cake.add_ingredient("love")
       expect(cake.ingredients).to include("love")
     end
@@ -36,11 +37,13 @@ describe Dessert do
 
   describe "#mix!" do
     it "shuffles the ingredient array" do
-      ingredients = ["sugar", "spice", "everything nice", "chemical X"]
+      jeryo = ["sugar", "spice", "everything nice", "chemical X"]
 
-      ingredients.each {|ingredient| cake.add_ingredient(ingredient)}
-      # how to test if ingredients get shuffled
-      # 
+      jeryo.each {|ingredient| cake.add_ingredient(ingredient)}
+      expect(cake.ingredients).to eq(jeryo)
+      cake.ingredients.shuffle!
+      expect(cake.ingredients).not_to eq(jeryo)
+
     end
   end
 
@@ -62,6 +65,9 @@ describe Dessert do
   end
 
   describe "#make_more" do
-    it "calls bake on the dessert's chef with the dessert passed in"
+    it "calls bake on the dessert's chef with the dessert passed in" do
+      expect(chef).to receive(:bake).with(cake)
+      chef.make_more(cake)
+    end
   end
 end
