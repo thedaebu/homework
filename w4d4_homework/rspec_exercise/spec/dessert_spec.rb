@@ -41,7 +41,7 @@ describe Dessert do
 
       jeryo.each {|ingredient| cake.add_ingredient(ingredient)}
       expect(cake.ingredients).to eq(jeryo)
-      cake.ingredients.shuffle!
+      cake.mix!
       expect(cake.ingredients).not_to eq(jeryo)
 
     end
@@ -67,7 +67,8 @@ describe Dessert do
   describe "#make_more" do
     it "calls bake on the dessert's chef with the dessert passed in" do
       expect(chef).to receive(:bake).with(cake)
-      chef.make_more(cake)
+      cake.make_more
+      # chef.bake(cake)
     end
   end
 end
