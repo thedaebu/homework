@@ -4,5 +4,6 @@ class CreateHouses < ActiveRecord::Migration[6.1]
       t.string :address
       t.timestamps
     end
+    add_index :houses
   end
 end

@@ -33,3 +33,4 @@ Migrating to CreateHouses (20210128040405)
   [1m[36mPerson Create (4.5ms)[0m  [1m[32mINSERT INTO "people" ("name", "house_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "DB"], ["house_id", 1], ["created_at", "2021-01-28 04:25:05.551511"], ["updated_at", "2021-01-28 04:25:05.551511"]]
   [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
   [1m[36mPerson Load (0.4ms)[0m  [1m[34mSELECT "people".* FROM "people" WHERE "people"."house_id" = $1[0m  [["house_id", 1]]
+  [1m[36mHouse Load (5.9ms)[0m  [1m[34mSELECT "houses".* FROM "houses"[0m
