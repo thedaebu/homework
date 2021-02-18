@@ -1,12 +1,14 @@
 function titleize (array, callback){
-    let capitalized = array.map(name => `Mx. ${name.toUpperCase} Jingleheimer Schmidt`);    
-
-    capitalized.forEach(callback);
+    let capitalized = array.map(function (name) {
+        return `Mx. ${name.toUpperCase} Jingleheimer Schmidt`
+        });    
+    callback(capitalized);
+    
 
 };
 
-function printCallback(name) {
-    console.log(name);
+function printCallback(array) {
+    array.forEach(element => { console.log(element);});
 };
 
 function Elephant(name, height, tricks) {
@@ -38,5 +40,11 @@ Elephant.paradehelper = function(elephant) {
 };
 
 function dinerBreakfast () {
-
+    let order = `I'd like cheesy scrambled eggs please.`
+    console.log(order)
+  
+    return function (food) {
+        order = `${order.slice(0, order.length-7)} and ${food} please.`;
+        console.log(order);
+    };
 };
